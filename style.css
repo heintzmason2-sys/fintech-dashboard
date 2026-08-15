@@ -1,0 +1,150 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color:black;
+    font-family:arial, sans-serif;
+    color:ghostwhite;
+}
+header p{
+    text-align: center;
+}
+
+h1{
+    font-size: 36px;
+    text-align:center;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 6px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+nav a:hover{
+    color: black;
+    background-color: gold;
+    cursor: pointer;
+}
+
+h2 {
+    width: 380px;
+    font-size: 24px;
+    padding: 15px;
+    border: 2px solid gold;
+    margin: 20px;
+}
+
+p {
+    color:aliceblue;
+}
+ footer {
+    background-color: #1a1a1a;
+ }
+ .hero{
+    color:gold;
+ }
+ #copyright{
+    color: gold;
+ }
+
+.up {
+    color: green;
+}
+.down {
+    color: red;
+}
+
+aside {
+    padding: 10px 15px;
+    margin: 15px;
+}
+
+h3 {
+    width:300px;
+    border: 1px solid gold;
+    padding: 8px;
+}
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    background-color: #2a2a2a;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+figure{
+    text-align: center;
+}
+img {
+    width: 100%;
+    max-width: 700px;
+    border-radius: 10px;
+}
+main {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    width: 95%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+
+    gap: 40px;
+}
+section p{
+    margin-left: 20px;
+}
+ section button{
+    margin-left: 0;
+}
+
+.search-area{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin: 30px 0;
+}
+.search-area button{
+    margin-left: 10px;
+}
+#refresh-market {
+    width: 150px;
+    height: 40px;
+}
+#stockSearch{
+    width: 280px;
+    padding: 10px;
+    border-radius: 6px;
+}
+button {
+    width: 105px;
+    height: 38px;
+    margin: 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.quick-actions{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 0 20px;
+}
+button:hover{
+    color: black;
+    background-color: gold ;
+}
+#view-market{
+    width: 280px;
+}
+.market-column{
+    display: flex;
+    flex-direction: column;
+}
