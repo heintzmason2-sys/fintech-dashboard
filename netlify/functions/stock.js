@@ -1,0 +1,1 @@
+const apiKey = Process.env.FINNHUB_API_KEY;
