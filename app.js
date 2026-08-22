@@ -1,22 +1,44 @@
 const copyRight = document.getElementById("copyright");
+const aaplPrice = document.getElementById("aapl-price");
+const tslaPrice = document.getElementById("tsla-price");
+const nvdaPrice = document.getElementById("nvda-price");
+const btcPrice = document.getElementById("btc-price");
+const msftPrice = document.getElementById("msft-price");
+
+function getStock(symbol, element){
+  fetch(`/.netlify/functions/stock?symbol=${symbol}`)
+  .then(function(response){
+    return response.json();
+  })
+  .then(function(data){
+    console.log("Updating:", symbol, data.c);
+    element.textContent = `${symbol}: $${data.c}`;
+    console.log("ELEMENT:", element);
+    console.log("TEXT:", element.textContent);
+  })
+}
+getStock("AAPL", aaplPrice);
+getStock("TSLA", tslaPrice);
+getStock("NVDA", nvdaPrice);
+getStock("BINANCE:BTCUSDT", btcPrice);
+getStock("MSFT", msftPrice);
+
+const refreshMarketButton = document.getElementById("refresh-market")
+
+refreshMarketButton.addEventListener("click", function() {
+  getStock("AAPL", aaplPrice);
+  getStock("TSLA", tslaPrice);
+  getStock("NVDA", nvdaPrice);
+  getStock("BINANCE:BTCUSDT", btcPrice);
+  getStock("MSFT", msftPrice);
+});
+
 copyRight.textContent = "©  2024 copyright Mason Heintz. All Rights Reserved.";
 console.log(copyRight);
 
-const firstHero = document.querySelector(".hero");
-console.log(firstHero);
-
-const heroes = document.querySelectorAll(".hero");
-console.log(heroes);
-
-heroes.forEach(function(hero) {
-  console.log(hero.textContent);
-});
-
 const image = document.querySelector("img");
-image.src = "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=300";
 image.style.cssText = "border: 3px solid gold; border-radius: 10px; background-color: black";
 image.setAttribute("alt", "Stock Market Dashboard");
-console.log(image);
 
 const buyStockButton = document.getElementById("buy-stocks")
 function buyStock(event) {
@@ -42,11 +64,5 @@ function handleSearch(event) {
 }
 stockSearchInput.addEventListener("keydown", handleSearch);
 
-const refreshMarketButton = document.getElementById("refresh-market")
-function refreshMarket(event){
-  const aaplPrice = document.getElementById("aapl-price")
-  aaplPrice.textContent = "AAPL: 197.81"
-  refreshMarketButton.textContent = "Markets Refreshed"
-}
-refreshMarketButton.addEventListener("click", refreshMarket)
+
 
