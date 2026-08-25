@@ -4,24 +4,40 @@ const tslaPrice = document.getElementById("tsla-price");
 const nvdaPrice = document.getElementById("nvda-price");
 const btcPrice = document.getElementById("btc-price");
 const msftPrice = document.getElementById("msft-price");
+const aaplChange = document.getElementById("aapl-change");
+const tslaChange = document.getElementById("tsla-change");
+const btcChange = document.getElementById("btc-change");
+const nvdaChange = document.getElementById("nvda-change");
+const msftChange = document.getElementById("msft-change");
 
-function getStock(symbol, element){
+function getStock(symbol, element, changeElement){
   fetch(`/.netlify/functions/stock?symbol=${symbol}`)
   .then(function(response){
     return response.json();
   })
   .then(function(data){
     console.log("Updating:", symbol, data.c);
-    element.textContent = `${symbol}: $${data.c}`;
+    element.textContent = `$${data.c}`
+    changeElement.textContent = `${data.d}  (${data.dp}%)`;
+    
+    if(data.d > 0){
+      changeElement.classList.add("up")
+      changeElement.classList.remove("down")
+    
+    }else if(data.d < 0){
+      changeElement.classList.add("down")
+      changeElement.classList.remove("up")
+    }
+    
     console.log("ELEMENT:", element);
     console.log("TEXT:", element.textContent);
   })
 }
-getStock("AAPL", aaplPrice);
-getStock("TSLA", tslaPrice);
-getStock("NVDA", nvdaPrice);
-getStock("BINANCE:BTCUSDT", btcPrice);
-getStock("MSFT", msftPrice);
+getStock("AAPL", aaplPrice, aaplChange);
+getStock("TSLA", tslaPrice, tslaChange);
+getStock("NVDA", nvdaPrice, nvdaChange);
+getStock("BINANCE:BTCUSDT", btcPrice, btcChange);
+getStock("MSFT", msftPrice, msftChange);
 
 const refreshMarketButton = document.getElementById("refresh-market")
 
